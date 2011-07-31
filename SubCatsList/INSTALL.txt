@@ -1,0 +1,14 @@
+INSTALLATION
+------------
+
+Please copy all files from CMSFiles folder to your cms folder. Then activate module from admin panel.
+You can configure module from Configuration->Design:
+
+design/SubCatsList/CatsPerLine - set how much categories per line will be shown;
+design/SubCatsList/BrandsPerCat - set how many brand links will be shown per category;
+design/SubCatsList/TitleCharsCount - set how many character symbols should category title contains.
+
+SYSTEM REQUIREMENTS
+-------------------
+
+SubCatsList module requires PHP 5 or higher and Axis commerce cms version 0.8 or higher.

@@ -1,0 +1,188 @@
+<?php
+
+/**
+ * SubCatsList
+ * 
+ * NOTICE OF LICENSE 
+ * 
+ * This source file is subject to the GNU GENERAL PUBLIC LICENSE (Version 3)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.gnu.org/licenses/gpl.html
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to red331@mail.ru so we can send you a copy immediately.   
+ *  
+ * author      Selihov Sergei Stanislavovich <red331@mail.ru>, Valentin Belyakov <nipellio@gmail.com> 
+ * copyright   Copyright (c) 2010-2011 Selihov Sergei Stanislavovich.
+ * license     http://www.gnu.org/licenses/gpl.html  GNU GENERAL PUBLIC LICENSE (Version 3)
+ *    
+ */
+
+$this->headLink()->appendStylesheet('skin/front/fallback/subcatslist/css/style.css');
+if (isset($this->box->categories) === FALSE || empty($this->box->categories) === TRUE || is_array($this->box->categories) === FALSE)
+  {
+  return FALSE;
+  }
+
+$tmpSubCatLevel = $this->box->GetSubCatLevel(); 
+$tmpCatsPerLine = $this->box->GetCatsPerLine();
+$tmpBrandsPerCat = $this->box->GetBrandsPerCat();
+$tmpCharCount = $this->box->GetTitleCharsCount();
+ 
+$tmpMainCatCounter = 0;
+$Counter1 = 0;
+$Counter2 = 0;
+$Counter3 = 0;
+
+$tmpCntCats = count($this->box->categories);
+
+if ($tmpCntCats == 0){return FALSE;}
+if (is_null($tmpSubCatLevel) === TRUE){return TRUE;}
+  
+?>
+
+<div class="SBCPTitle"><h1 class="SBCTitle"><?php echo Axis::translate('Error331_SubCatsList')->__('Categories'); ?></h1></div>
+
+<?php
+  
+for ($Counter1 = 0; $Counter1 < $tmpCntCats; $Counter1++)
+  { 
+  if ($this->box->categories[$Counter1]['lvl'] != $tmpSubCatLevel)
+    {
+    continue;
+    } 
+  else
+    {
+    if ($tmpMainCatCounter == 0)
+      {
+      ?>
+      
+      <div class="SBCColSet">
+      
+      <?php
+      }
+    
+    
+    $tmpMainCatCounter += 1;
+    $tmpURL = $this->box->GetHURL($this->box->categories[$Counter1], $this);
+    
+    ?>
+    
+    <div class="SBCw20pr">
+    <div class="SBCInCont1">
+    <div class="SBCInCont2">
+    
+    <?php
+
+    if (!$this->box->categories[$Counter1]['image_base'])
+      {
+	    ?>
+                                                      
+	    <a class="SBCImgLink" href="<?php echo($tmpURL); ?>"><img src="<?php echo($this->href('skin/').'front/fallback/subcatslist/images/no_image.gif'); ?>" width="115px" height="85px" class="img"  /></a>
+
+	    <?php
+	    }
+    else
+	    {
+	    ?>
+
+	    <a class="SBCImgLink" href="<?php echo($tmpURL); ?>"><img src="<?php echo($this->href('media/category').$this->box->categories[$Counter1]['image_base']); ?>" width="115px" height="85px" class="img"  /></a>
+
+	    <?php
+	    }
+
+    ?>
+    
+    </div>
+
+    <?php
+
+    if (strlen($this->box->categories[$Counter1]['name']) > $tmpCharCount)
+      {
+      $tmpTitle = $this->box->categories[$Counter1]['name'];
+      $tmpTitle = str_replace(array(',', '.', '-', '_'), ' ' , $tmpTitle);
+  
+      $tmpSpacePos = strrpos($tmpTitle, ' ');
+
+      if ($tmpSpacePos === FALSE)
+        {
+        $tmpTitle = $this->box->categories[$Counter1]['name']; 
+        }
+      else
+        {
+        $tmpTitle = substr($tmpTitle, 0, $tmpSpacePos);
+        }  
+      }
+    else
+      {
+      $tmpTitle = $this->box->categories[$Counter1]['name'];
+      }
+
+
+    ?>
+
+    <h2><a href="<?php echo($tmpURL); ?>"><?php echo $tmpTitle ?></a></h2>
+    <div class="SBCElm">
+
+
+    <?php
+
+    if ($this->box->categories[$Counter1]['add_info'])
+      {
+      for ($Counter2 = 0; $Counter2 < count($this->box->categories[$Counter1]['add_info']); $Counter2++)
+        {      
+        if (is_null($this->box->categories[$Counter1]['add_info'][$Counter2]['man_url']) === TRUE)
+          {
+          continue;
+          }
+
+        $tmpMURL = $this->box->GetMHURL($this->box->categories[$Counter1]['add_info'][$Counter2], $this);
+         
+        ?>
+                       
+        <a href="<?php echo($tmpMURL.$this->box->categories[$Counter1]['key_word'].'/'); ?>" class="SBCLinks"><?php echo($this->box->categories[$Counter1]['add_info'][$Counter2]['title']); ?></a><br/>
+    
+        <?php
+        
+        $Counter3 += 1;
+        if ($Counter3 >= $tmpBrandsPerCat) {break;}
+        }
+        
+      $Counter3 = 0;
+      }
+
+    ?>
+
+    </div>
+
+    <a href="<?php echo($tmpURL); ?>" class="SBCLinksAll"><?php echo Axis::translate('Error331_SubCatsList')->__('Show all'); ?></a>
+
+    </div>
+    </div>    
+       
+    <?php
+    
+    if ($tmpMainCatCounter == $tmpCatsPerLine)
+      {
+      ?>
+      
+      </div>
+      
+      <?php
+      $tmpMainCatCounter = 0;
+      }
+    
+    }
+  }
+  
+if ($tmpMainCatCounter != 0)
+  {
+  ?>
+  
+  </div>
+  
+  <?php
+  }
+
+?>
