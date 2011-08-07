@@ -1,0 +1,42 @@
+/* DynCatsMenu module styles starts here */
+
+div.DCMContOut {margin-bottom: 7px; background: none repeat scroll 0 0 #F6F6F6;}
+
+div.DCMContHead {padding: 6px 7px; background: url("../images/box-1.gif") repeat-x scroll 0 0 transparent; text-transform: uppercase; color: #555555;}
+span.DCMTitle {padding: 1px 0 3px 22px; font-family: Tahoma,Arial,Helvetica,sans-serif; font-size: 11px; font-weight: bold; text-transform: uppercase; background: url("../images/common.gif") no-repeat scroll -10000px -10000px transparent; background-position: -8px -488px; color: #FFFFFF;}
+    
+div.DCMBCont{padding: 0px;}
+    
+div.DCMBCont ul {margin: 0px; padding: 0px; list-style-type: none; font-family: Tahoma,Arial,Helvetica,sans-serif; font-size: 11px; text-transform: uppercase; background-color: #CFE4EA;}  
+div.DCMBCont ul li {cursor: pointer; padding: 0 0 0 2.4em; line-height: 1.3em;}
+div.DCMBCont ul li a{display: block; padding: 0.3em 0; line-height: 17px; font-weight: bold; text-decoration: none; color: #484E53;}
+
+.DCMBCont ul ul li a {font-weight:normal;}
+.DCMBCont ul {background-color:#cfe4ea; text-transform:uppercase; font-family: Tahoma, Arial, Helvetica, sans-serif; font-size:11px;}
+.DCMBCont ul ul {background-color:#e6eef2; text-transform:none; padding:0; }
+.DCMBCont ul ul ul{background-color:#ffffff;}
+.DCMBCont li { padding:0 0 0 2.4em; border-bottom:dashed 1px white; cursor: pointer; background: url(../images/categories-list.gif) no-repeat 1em .9em; }
+
+.DCMBCont li.DCNShow li{display: block;}
+.DCMBCont li.DCMNotShow li{display: none;}
+
+.DCMBCont li.DCMShow {background: url(../images/categories-list-open.gif) no-repeat 1em .9em;}
+.DCMBCont li.DCMNotShow {background: url(../images/categories-list.gif) no-repeat 1em .9em;}
+
+.DCMBCont li.DCMSub0 {padding-bottom:0; border-bottom:none;}
+
+.DCMBCont li.DCMSub0 ul {margin:0 0 0 -2.4em; border-top:dashed 1px #ffffff; }
+
+.DCMBCont li.DCMSub1 {background-color:#e6eef2; padding-bottom:0; border-bottom:none; }
+.DCMBCont li.DCMSub2 {background-color:#ffffff; padding-bottom:0; border-bottom:none; }
+
+.DCMBCont li.DCMSub2 li {padding:0 0 0 3.6em;}
+
+.DCMBCont li.DCMSub1 ul {margin:0 0 0 -2.4em; border-top:dashed 1px #ffffff; }
+.DCMBCont li.DCMSub2 ul {margin:0 0 0 -2.4em; border-top:dashed 1px #e6eef2; }
+
+
+.DCMBCont li.DCMSub2_1 {border-top:dashed 1px #ffffff; }
+.DCMBCont li.DCMSub2_1 li {padding:0 0 0 3.6em; }
+
+/* DynCatsMenu module styles ends here */

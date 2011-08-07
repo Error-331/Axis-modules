@@ -1,0 +1,9 @@
+INSTALLATION
+------------
+
+Please copy all files from CMSFiles folder to your cms folder. Then activate module from admin panel.
+
+SYSTEM REQUIREMENTS
+-------------------
+
+DynCatsMenu module requires PHP 5 or higher and Axis commerce cms version 0.8 or higher.
