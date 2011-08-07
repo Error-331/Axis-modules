@@ -55,44 +55,44 @@ class Error331_DynCatsMenu_Box_Menu extends Axis_Core_Box_Abstract
         {
 			  $usrCats[$Counter1]['sub_mark'] = 'DCMSub0 DCMNotShow';
 			  }
-		  else if ($usrCats[$Counter1]['lvl'] == 2)
-			 {
-			 $usrCats[$Counter1]['sub_mark'] = 'DCMSub2_1 DCMNotShow';	
-			 }
-		  else
-			 {
-			 $usrCats[$Counter1]['sub_mark'] = 'DCMDeepSub DCMNotShow';
-			 }					
-                            
-    if ($usrCats[$Counter1]['id'] === $usrCatId)
-      {
-      $tmpCurLevel = $usrCats[$Counter1]['lvl'];
-      $tmpArr[] = $usrCats[$Counter1]['lvl'];
-      $usrCats[$Counter1]['is_selected'] = TRUE;
-      $usrCats[$Counter1]['is_part'] = TRUE;                            
-                              
-      if ($usrCats[$Counter1]['lvl'] == 1)
-        {
-        $usrCats[$Counter1]['sub_mark'] = 'DCMSub1 DCMShow';
-        }
       else if ($usrCats[$Counter1]['lvl'] == 2)
         {
+        $usrCats[$Counter1]['sub_mark'] = 'DCMSub2_1 DCMNotShow';	
+        }
+      else
+        {
+        $usrCats[$Counter1]['sub_mark'] = 'DCMDeepSub DCMNotShow';
+        }					
+                            
+      if ($usrCats[$Counter1]['id'] === $usrCatId)
+        {
+        $tmpCurLevel = $usrCats[$Counter1]['lvl'];
+        $tmpArr[] = $usrCats[$Counter1]['lvl'];
         $usrCats[$Counter1]['is_selected'] = TRUE;
-        $usrCats[$Counter1]['is_part'] = TRUE;
-                                
-        for ($Counter2 = $Counter1; $Counter2 >= 0; $Counter2--)
+        $usrCats[$Counter1]['is_part'] = TRUE;                            
+                              
+        if ($usrCats[$Counter1]['lvl'] == 1)
           {
-          if ($usrCats[$Counter2]['lvl'] != $tmpCurLevel && in_array($usrCats[$Counter2]['lvl'], $tmpArr) === FALSE)
-            {
-            $tmpArr[] = $usrCats[$Counter2]['lvl'];
-            $usrCats[$Counter2]['is_part'] = TRUE;
-                                    
-            if ($usrCats[$Counter2]['lvl'] == 1)
-              {
-              $usrCats[$Counter2]['sub_mark'] = 'DCMSub1 DCMShow';
-              }                                                                        
-            }                                                                 
+          $usrCats[$Counter1]['sub_mark'] = 'DCMSub1 DCMShow';
           }
+        else if ($usrCats[$Counter1]['lvl'] == 2)
+          {
+          $usrCats[$Counter1]['is_selected'] = TRUE;
+          $usrCats[$Counter1]['is_part'] = TRUE;
+                                
+          for ($Counter2 = $Counter1; $Counter2 >= 0; $Counter2--)
+            {
+            if ($usrCats[$Counter2]['lvl'] != $tmpCurLevel && in_array($usrCats[$Counter2]['lvl'], $tmpArr) === FALSE)
+              {
+              $tmpArr[] = $usrCats[$Counter2]['lvl'];
+              $usrCats[$Counter2]['is_part'] = TRUE;
+                                    
+              if ($usrCats[$Counter2]['lvl'] == 1)
+                {
+                $usrCats[$Counter2]['sub_mark'] = 'DCMSub1 DCMShow';
+                }                                                                        
+              }                                                                 
+            }
                                   
         $usrCats[$Counter1]['sub_mark'] = 'DCMSub2 DCMShow';
         }
